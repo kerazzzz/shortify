@@ -1,0 +1,84 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL SHORTNER</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h1>Short URLs</h1>
+    <ul>
+        <% urls.forEach(url => { %> 
+            <li>
+                Short ID: <a href="/<%= url.shortId %>" target="_blank"><%= url.shortId %></a>
+                <br>
+                Directs to:<a href="<%= url.redirectedURL %>" target="_blank"><%= url.redirectedURL %></a> <hr>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 > <a style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #0d9875 ; text-decoration: none;" href="/home">URL Shortener</a></h1>
+        
+        <% if (locals.id) { %>
+        <div class="generated-url">
+            Shortened URL: 
+            <a href="http://localhost:8000/<%=id%>" target="_blank">
+                http://localhost:8000/<%=id%>
+            </a>
+        </div>
+        <% } %>
+
+        <div class="form-container">
+            <form method="POST" action="/url">
+                <div class="input-group">
+                    <input  style="padding: 20px; border-radius: 50px;" type="text" name="url" placeholder="Enter your URL here..." autofocus>
+                    <button style="color: white; background-color: #10a37f; padding: 20px; border-radius: 20px;" type="submit">Shorten</button>
+                </div>
+
+               
+
+
+            </form>
+        </div>
+
+        <% if (urls && urls.length > 0) { %>
+        <div class="history-container">
+            <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Shortened URLs History</h2>
+            <div class="url-list">
+                <% urls.forEach(url => { %>
+                <div class="url-item">
+                    <div class="url-pair">
+                        <span class="url-label">Short URL:</span>
+                        <a class="url-link" href="/<%= url.shortId %>" target="_blank">
+                            http://localhost:8000/<%= url.shortId %>
+                        </a>
+                    </div>
+                    <div class="url-pair">
+                        <span class="url-label">Original URL:</span>
+                        <a class="url-link original" href="<%= url.redirectedURL %>" target="_blank">
+                            <%= url.redirectedURL %>
+                        </a>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    
+</body>
+</html>

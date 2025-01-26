@@ -1,0 +1,74 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+</head>
+<body>
+    Home Page
+    <% if (locals.id) { %>
+     <p>URL Generated: <a href="http://localhost:8000/<%=id%>" target="_blank" > http://localhost:8000/<%=id%>  </a> </p> 
+    <% } %>
+    <div>
+        <form method="POST" action="/url">
+            <label >Enter URL to Shorten:</label>
+            <input type="text" name="url" placeholder="https://example.com">
+            <button type="submit">Enter</button>
+        </form>
+    </div>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">URL Shortener</h1>
+        
+        <% if (locals.id) { %>
+        <div class="generated-url">
+            Shortened URL: 
+            <a href="http://localhost:8000/<%=id%>" target="_blank">
+                http://localhost:8000/<%=id%>
+            </a>
+        </div>
+        <% } %>
+
+        <div class="form-container">
+            <form method="POST" action="/url">
+                <div class="input-group">
+                    <input type="text" name="url" placeholder="Enter your URL here..." autofocus>
+                    <button type="submit">Shorten</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- <div class="all-links-btn">
+            <button style="font-family: monospace;" class="btn-secondary"> View History</button>
+        </div> -->
+        <div class="all-links-btn">
+            <button 
+            style="font-family: monospace;" class="btn-secondary"
+            onclick="window.location.href = 'http://localhost:8000/test'"
+            >
+              View History
+            </button>
+          </div>
+
+
+    </div>
+    <footer style="padding: 20px;" class="footer">
+        <div class="footer-content">
+            <span  class="trademark">© 2025 URL Shortener</span> • Developed by  <a style="color:#10a37f ;" href="#" target="_blank" >Reason Dahal</a> 
+        </div>
+    </footer>
+</body>
+</html>
